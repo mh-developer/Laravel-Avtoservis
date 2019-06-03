@@ -1,4 +1,5 @@
 <?php
+use Symfony\Component\HttpKernel\Fragment\RoutableFragmentRenderer;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,16 +13,22 @@
 */
 
 Route::get('/', function () {
-    return view('dashboard.home');
-})->middleware('auth');
+    return view('index');
+});
+
+Route::get('/index', function() {
+    return view('index');
+})->name('index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/predstavitev', function() {
-    return view('index');
-})->name('predstavitev');
+Route::resource('cars', 'CarsController');
+
+Route::get('test', function () {
+    return ['test', 'Too je ime', 'Naslov in ura'];
+});
 
 // Route::get('/projects', 'ProjectsController@index');
 // Route::get('/projects/create', 'ProjectsController@create');

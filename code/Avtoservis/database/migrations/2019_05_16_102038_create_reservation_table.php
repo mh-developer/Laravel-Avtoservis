@@ -18,16 +18,20 @@ class CreateReservationTable extends Migration
             $table->bigIncrements('id_rezervacije');
 
             $table->unsignedBigInteger('id_uporabnika');
+            $table->unsignedBigInteger('id_storitve');
+            $table->unsignedBigInteger('id_avtoservis');
+            $table->unsignedBigInteger('id_avtomobila');
 
-            $table->string('ime');
-            $table->string('priimek');
-            $table->string('znamka');
-            $table->string('model');
-            $table->string('opis')->nullable();
-            $table->year('leto_prve_registracije');
+            $table->dateTime('termin');
+            $table->text('dodatni_opis');
+
+            $table->boolean('is_confirm')->default(false);
             $table->timestamps();
 
-            $table->foreign('id_uporabnika')->references('id')->on('users');;
+            $table->foreign('id_uporabnika')->references('id')->on('users');
+            $table->foreign('id_storitve')->references('id_storitve')->on('services');
+            $table->foreign('id_avtoservis')->references('id_avtoservis')->on('avtoservis');
+            $table->foreign('id_avtomobila')->references('id_avtomobila')->on('cars');
         });
     }
 

@@ -1,107 +1,108 @@
-
-
-        <!-- Styles -->
-        {{-- <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style> --}}
-
 @extends('layouts.app')
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
+@section('navbar')
+    @include('partial.navbar-index-page')
+@endsection
+
+@section('content')
+
+<div class="wrapper bg-primary text-light pt-4">
+    <section id="home-page">
+        <div class="container-fluid full-height">
+            <div class="text-center">
+                <div class="title">
+                    <div class="list__item color-3">
+						<h3 class="list__text">Avtoservis</h3>
+                    </div>
                 </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
             </div>
         </div>
+    </section>
 
-
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="..." class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
-                  </div>
+    <section id="kontakt">
+        <div style="padding-top:80px"></div>
+        <div class="container-fluid py-3 bg-secondary text-dark">
+            <div class="text-center mb-2">
+                <div class="title">
+                    Kontakt
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </div>
+            </div>
+            <div class="row">
+                <div class="col-lg">
+                    {{-- <img src="https://via.placeholder.com/700x500" alt="Zemljevid" class="img-fluid rounded"> --}}
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2769.047254914646!2d14.46673181554057!3d46.05015567911233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47652d433879fbd9%3A0xf3614360b12cc862!2sFakulteta+za+ra%C4%8Dunalni%C5%A1tvo+in+informatiko!5e0!3m2!1ssl!2ssi!4v1558469734699!5m2!1ssl!2ssi" height="600" frameborder="0" style="width: 100%;border:0" allowfullscreen></iframe>
+                </div>
+                <div class="col-lg pt-3">
+                    <form action="{{-- {{ route('register') }} --}}" method="POST">
+                        @csrf
+
+                        <div class="form-group">
+                            <label for="contact-name">Ime</label>
+                            <input id="contact-name" type="text" class="form-control @error('contact-name') is-invalid @enderror" name="contact-name" value="{{ old('contact-name') }}" required placeholder="Vnesite ime">
+                            <div class="valid-feedback">Success! You've done it.</div>
+                            @error('contact-name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-lastname">Priimek</label>
+                            <input id="contact-lastname" type="text" class="form-control @error('contact-lastname') is-invalid @enderror" name="contact-lastname" value="{{ old('contact-lastname') }}" required placeholder="Vnesite priimek">
+                            <div class="valid-feedback">Success! You've done it.</div>
+                            @error('contact-lastname')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-mail">Elektronska pošta</label>
+                            <input id="contact-mail" type="email" class="form-control @error('contact-mail') is-invalid @enderror" name="contact-mail" value="{{ old('contact-mail') }}" required pattern="*@*" placeholder="Vnesite elektronsko pošto">
+                            <div class="valid-feedback">Success! You've done it.</div>
+                            @error('contact-mail')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-number">Telefonska številka</label>
+                            <input id="contact-number" type="number" class="form-control @error('contact-number') is-invalid @enderror" name="contact-number" value="{{ old('contact-number') }}" required placeholder="Vnesite telefonsko številko">
+                            <div class="valid-feedback">Success! You've done it.</div>
+                            @error('contact-number')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Sporočilo</label>
+                            <textarea id="contact-message" class="form-control @error('contact-message') is-invalid @enderror" name="contact-message" value="{{ old('contact-message') }}" required cols="10" rows="5" placeholder="Vnesite sporočilo"></textarea>
+                            <div class="valid-feedback">Success! You've done it.</div>
+                            @error('contact-message')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-padding">Pošlji</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a href="#top" id="scroll_to_top" class="btn btn-primary smooth_scroll" data-tooltip="Do vrha">
+        <i class="material-icons">keyboard_arrow_up</i>
+    </a>
+</div>
+
+<script src="{{ asset('js/segment.min.js') }}" defer></script>
+<script src="{{ asset('js/d3-ease.v0.6.js') }}" defer></script>
+<script src="{{ asset('js/letters.js') }}" defer></script>
+<script src="{{ asset('js/home-page.js') }}" defer></script>
+
+@endsection

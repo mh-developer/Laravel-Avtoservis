@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class CarsController extends Controller
@@ -13,7 +14,10 @@ class CarsController extends Controller
      */
     public function index()
     {
-        //
+        // auth()->user()
+        $reservations = DB::table('reservation')->paginate(5);
+
+        return response()->json($reservations);
     }
 
     /**

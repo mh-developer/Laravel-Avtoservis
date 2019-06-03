@@ -1,0 +1,54 @@
+@font-face {
+	font-family: 'codropsicons';
+	font-weight: normal;
+	font-style: normal;
+	src: url('http://localhost:8000/fonts/codropsicons/codropsicons.eot');
+	src: url('http://localhost:8000/fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'), url('http://localhost:8000/fonts/codropsicons/codropsicons.woff') format('woff'), url('http://localhost:8000/fonts/codropsicons/codropsicons.ttf') format('truetype'), url('http://localhost:8000/fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+}
+
+@font-face {
+	font-family: 'knarfart';
+	font-weight: normal;
+	font-style: normal;
+	src: url('http://localhost:8000/fonts/knarfart/knarfart-webfont.eot');
+	src: url('http://localhost:8000/fonts/knarfart/knarfart-webfont.eot?#iefix') format('embedded-opentype'), url('http://localhost:8000/fonts/knarfart/knarfart-webfont.woff2') format('woff2'), url('http://localhost:8000/fonts/knarfart/knarfart-webfont.woff') format('woff'), url('http://localhost:8000/fonts/knarfart/knarfart-webfont.ttf') format('truetype'), url('http://localhost:8000/fonts/knarfart/knarfart-webfont.svg#knarfart') format('svg');
+}
+
+@font-face {
+	font-family: 'morse_coderegular';
+	font-weight: normal;
+	font-style: normal;
+	src: url('http://localhost:8000/fonts/morse/m0rse-webfont.eot');
+	src: url('http://localhost:8000/fonts/morse/m0rse-webfont.eot?#iefix') format('embedded-opentype'), url('http://localhost:8000/fonts/morse/m0rse-webfont.woff2') format('woff2'), url('http://localhost:8000/fonts/morse/m0rse-webfont.woff') format('woff'), url('http://localhost:8000/fonts/morse/m0rse-webfont.ttf') format('truetype'), url('http://localhost:8000/fonts/morse/m0rse-webfont.svg#morse_coderegular') format('svg');
+}
+
+/* List */
+
+.list__item {
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	max-width: calc(100vw - 40px);
+	height: calc(100vh - 40px);
+	min-height: 460px;
+	margin: 20px 20px 20px 20px;
+    text-align: center;
+    opacity: 0.6;
+}
+
+
+.control__button {
+	width: 1em;
+	height: 1em;
+    z-index: 100;
+    border: 0;
+	background: #1b5baf;
+}
+
+.color-3 {
+	background: #3d3d40;
+}

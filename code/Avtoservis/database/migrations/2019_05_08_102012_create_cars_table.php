@@ -13,15 +13,19 @@ class CreateCarsTable extends Migration
      */
     public function up()
     {
+        Schema::defaultStringLength(191);
         Schema::create('cars', function (Blueprint $table) {
             $table->bigIncrements('id_avtomobila');
 
             $table->unsignedBigInteger('id_uporabnika');
 
-            $table->string('znamka', 191);
-            $table->string('model', 191);
-            $table->string('opis', 191)->nullable();
+            $table->string('znamka');
+            $table->string('model');
+            $table->text('opis')->nullable();
             $table->year('leto_prve_registracije');
+
+            $table->boolean('is_active')->default(true);
+
             $table->timestamps();
 
             $table->foreign('id_uporabnika')->references('id')->on('users');

@@ -20,6 +20,14 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('reservation-component', require('./components/ReservationCard.vue').default);
+import VuePagination from './components/Pagination.vue';
+import axios from 'axios';
+
+axios.defaults.headers.common = {
+    'X-Requested-With': 'XMLHttpRequest',
+    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+};
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -27,6 +35,54 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
+
+
+// const cars = new Vue({
+//     el: '#app',
+//     data: {
+//         reservations: []
+//     },
+//     mounted() {
+//     	axios.get("cars").then(response => {
+//             console.log(response.data)
+//             cars.reservations = response.data
+//         }).catch(error => {
+//             console.log(error)
+//         });
+//     }
+// });
+
+const  app = new Vue({
     el: '#app',
+    data: {
+        reservations: {
+            total: 0,
+            per_page: 2,
+            from: 1,
+            to: 0,
+            current_page: 1
+        },
+        offset: 4,
+    },
+    mounted() {
+        this.getReservations();
+    },
+    components: {
+        VuePagination,
+    },
+    methods: {
+        getReservations() {
+            axios.get(`/cars?page=${this.reservations.current_page}`)
+                .then((response) => {
+                    this.reservations = response.data;
+                })
+                .catch(() => {
+                    console.log('handle server error from here');
+                });
+        }
+    }
 });
+
+
+
+

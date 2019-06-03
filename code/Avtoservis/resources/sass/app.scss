@@ -3,9 +3,11 @@
 
 // Variables
 // @import 'variables';
-@import '~bootswatch/dist/flatly/variables';
+@import '~bootswatch/dist/materia/variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-@import "~bootswatch/dist/flatly/bootswatch";
+@import "~bootswatch/dist/materia/bootswatch";
+
+@import 'material-icons/iconfont/material-icons.scss';
