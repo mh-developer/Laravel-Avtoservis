@@ -20,7 +20,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/home-page.css') }}" />
 </head>
 <body id="top">
-    <div>
+    <div id="app">
 
         @hasSection('navbar')
             @yield('navbar')
@@ -35,6 +35,7 @@
         @yield('footer')
 
         @include('partial.footer')
+
     </div>
 
     <!-- Scripts -->

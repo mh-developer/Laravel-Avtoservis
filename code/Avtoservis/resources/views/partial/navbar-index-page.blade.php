@@ -13,14 +13,14 @@
                     <li class="nav-item">
                         <a class="nav-link smooth_scroll" href="#top">{{ __('Domov') }}</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link smooth_scroll" href="#o-nas">{{ __('O nas') }}</a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link smooth_scroll" href="#kontakt">{{ __('Kontakt') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">{{ __('Naročilo na servis') }}</a>
+                        <a class="nav-link" href="{{ route('reservations.create') }}">{{ __('Naročilo na servis') }}</a>
                     </li>
                 </ul>
 
@@ -43,14 +43,14 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">
-                                     {{ __('Nadzorna plošča') }}
+                                <a class="dropdown-item" href="{{ route('home') }}">
+                                    {{ __('Nadzorna plošča') }}
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                     {{ __('Profil') }}
+                                <a class="dropdown-item" href="{{ route('cars.create') }}">
+                                    {{ __('Dodaj avtomobil') }}
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                     {{ __('Pomoč') }}
+                                <a class="dropdown-item" href="{{ route('reservations.create') }}">
+                                    {{ __('Noroči se na servis') }}
                                 </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

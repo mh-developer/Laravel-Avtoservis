@@ -13,6 +13,7 @@ class CreateServicesTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::defaultStringLength(191);
         Schema::create('services', function (Blueprint $table) {
             $table->bigIncrements('id_storitve');

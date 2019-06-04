@@ -32,8 +32,8 @@
                     {{-- <img src="https://via.placeholder.com/700x500" alt="Zemljevid" class="img-fluid rounded"> --}}
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2769.047254914646!2d14.46673181554057!3d46.05015567911233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47652d433879fbd9%3A0xf3614360b12cc862!2sFakulteta+za+ra%C4%8Dunalni%C5%A1tvo+in+informatiko!5e0!3m2!1ssl!2ssi!4v1558469734699!5m2!1ssl!2ssi" height="600" frameborder="0" style="width: 100%;border:0" allowfullscreen></iframe>
                 </div>
-                <div class="col-lg pt-3">
-                    <form action="{{-- {{ route('register') }} --}}" method="POST">
+                {{-- <div class="col-lg pt-3">
+                    <form action="{{ route('register') }}" method="POST">
                         @csrf
 
                         <div class="form-group">
@@ -90,19 +90,21 @@
                             <button type="submit" class="btn btn-primary btn-padding">Pošlji</button>
                         </div>
                     </form>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
 
-    <a href="#top" id="scroll_to_top" class="btn btn-primary smooth_scroll" data-tooltip="Do vrha">
+    <a href="#top" id="scroll_to_top" class="btn btn-primary smooth_scroll" data-tooltip="Do vrha" data-tippy="Do vrha">
         <i class="material-icons">keyboard_arrow_up</i>
     </a>
 </div>
 
-<script src="{{ asset('js/segment.min.js') }}" defer></script>
-<script src="{{ asset('js/d3-ease.v0.6.js') }}" defer></script>
-<script src="{{ asset('js/letters.js') }}" defer></script>
-<script src="{{ asset('js/home-page.js') }}" defer></script>
+@endsection
 
+@section('vueApp')
+    <script src="{{ asset('js/segment.min.js') }}" defer></script>
+    <script src="{{ asset('js/d3-ease.v0.6.js') }}" defer></script>
+    <script src="{{ asset('js/letters.js') }}" defer></script>
+    <script src="{{ asset('js/home-page.js') }}" defer></script>
 @endsection

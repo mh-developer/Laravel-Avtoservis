@@ -25,10 +25,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('cars', 'CarsController');
+Route::resource('reservations', 'ReservationsController');
 
-Route::get('test', function () {
-    return ['test', 'Too je ime', 'Naslov in ura'];
-});
+
 
 // Route::get('/projects', 'ProjectsController@index');
 // Route::get('/projects/create', 'ProjectsController@create');

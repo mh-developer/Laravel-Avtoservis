@@ -13,6 +13,7 @@ class CreateCarsTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::defaultStringLength(191);
         Schema::create('cars', function (Blueprint $table) {
             $table->bigIncrements('id_avtomobila');

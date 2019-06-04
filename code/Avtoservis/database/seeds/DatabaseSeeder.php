@@ -48,7 +48,7 @@ class DatabaseSeeder extends Seeder
         }
 
         foreach (range(1, 4000) as $count) {
-            DB::table('reservation')->insert([
+            DB::table('reservations')->insert([
                 'termin' => $faker->dateTimeThisYear(),
                 'dodatni_opis' => $faker->text,
                 'is_confirm' => $faker->numberBetween($min = 0, $max = 1),

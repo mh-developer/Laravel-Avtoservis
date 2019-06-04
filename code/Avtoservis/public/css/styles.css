@@ -21,16 +21,20 @@ html, body {
     background-size: cover;
 }
 
-/*
-.links > a {
-    color: #636b6f;
-    padding: 0 25px;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: .1rem;
-    text-decoration: none;
-    text-transform: uppercase;
-} */
+.border-error {
+    border-bottom: 2px solid #dc3545 !important;
+}
+
+.border-success {
+    border-bottom: 2px solid #28a745 !important;
+}
+
+.error {
+    display: none;
+    font-size: 11px;
+    color: #dc3545 !important;
+    margin-left: 25px;
+}
 
 .btn {
     -webkit-transition: all 0.2s ease-in-out !important;

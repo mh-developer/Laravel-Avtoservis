@@ -7,6 +7,9 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import VueTippy from 'vue-tippy'
+
+Vue.use(VueTippy)
 
 /**
  * The following block of code may be used to automatically register your
@@ -52,7 +55,7 @@ axios.defaults.headers.common = {
 //     }
 // });
 
-const  app = new Vue({
+const app = new Vue({
     el: '#app',
     data: {
         reservations: {
@@ -63,22 +66,48 @@ const  app = new Vue({
             current_page: 1
         },
         offset: 4,
+        cars: []
     },
     mounted() {
         this.getReservations();
+        this.getCars();
     },
     components: {
         VuePagination,
     },
     methods: {
         getReservations() {
-            axios.get(`/cars?page=${this.reservations.current_page}`)
-                .then((response) => {
-                    this.reservations = response.data;
-                })
-                .catch(() => {
-                    console.log('handle server error from here');
-                });
+            axios.get(`/reservations?page=${this.reservations.current_page}`).then(response => {
+                this.reservations = response.data;
+            }).catch(error => {
+                console.log(error);
+            });
+        },
+        getCars() {
+            axios.get("cars").then(response => {
+                this.cars = response.data
+            }).catch(error => {
+                console.log(error);
+            });
+        },
+        deleteCar(id) {
+            // console.log(`/cars/${id}`)
+            // return `/cars/${id}`;
+            axios.delete(`/cars/${id}`).then(response => {
+                // console.log(response);
+                this.getCars()
+            }).catch(error => {
+                console.log(error);
+            });
+        },
+        updateCar(id) {
+            return `/cars/${id}/edit`;
+        },
+        getCarId(id) {
+            return `reservation-${id}`;
+        },
+        getCarIdWithHashTag(id) {
+            return `#reservation-${id}`;
         }
     }
 });
