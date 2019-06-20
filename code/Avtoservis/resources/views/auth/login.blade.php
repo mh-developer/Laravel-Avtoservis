@@ -43,13 +43,13 @@
                                 {{ __('Prijava') }}
                             </button>
                         </div>
-                        <div class="form-group mb-0">
+                        {{-- <div class="form-group mb-0">
                             @if (Route::has('password.request'))
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Pozabljeno geslo?') }}
                                 </a>
                             @endif
-                        </div>
+                        </div> --}}
                     </form>
                 </div>
             </div>
