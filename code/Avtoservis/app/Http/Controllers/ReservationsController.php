@@ -54,7 +54,7 @@ class ReservationsController extends Controller
             'id_storitve' => 'required|integer',
             'id_avtoservis' => 'required|integer',
             'id_avtomobila' => 'required|integer',
-            'termin' => 'required|regex:/(\d{4})\-(\d{2})\-(\d{2}) (\d{2})\:(\d{2})\:(\d{2})/',
+            'termin' => 'required', // |regex:/(\d{4})\-(\d{2})\-(\d{2}) (\d{2})\:(\d{2})\:(\d{2})/
             'dodatni_opis' => 'required',
             'is_confirm' => 'required'
         ]);
@@ -110,10 +110,10 @@ class ReservationsController extends Controller
     }
 
     public function messages()
-{
-    return [
-        'termin.required' => 'Termin je obvezen',
-        'dodatni_opis.required'  => 'Dodatni opis je obvezen',
-    ];
-}
+    {
+        return [
+            'termin.required' => 'Termin je obvezen',
+            'dodatni_opis.required'  => 'Dodatni opis je obvezen',
+        ];
+    }
 }

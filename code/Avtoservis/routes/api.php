@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Reservation;
+use App\Car;
+use App\Avtoservi;
+use App\Service;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +19,37 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('/cars', function () {
+    $cars = Car::all();
+
+    return response()->json($cars);
+});
+
+
+Route::get('/reservations', function () {
+    $reservations = Reservation::all();
+
+    return response()->json($reservations);
+});
+
+Route::get('/cars/{id}', function ($id) {
+    $cars = Car::where("id_avtomobila", $id)->first();
+
+    return response()->json($cars);
+});
+
+Route::get('/avtoservisi', function () {
+
+    $avtoservis = Avtoservi::get();
+
+    return response()->json($avtoservis);
+});
+
+Route::get('/storitve', function () {
+
+    $services = Service::get();
+
+    return response()->json($services);
 });

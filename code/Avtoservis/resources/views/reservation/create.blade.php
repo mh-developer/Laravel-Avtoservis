@@ -72,7 +72,7 @@
                             <span class="error">To polje je obvezno</span>
                         </div>
                         <div class="form-group form-termin">
-                            <input type="text" class="form-control @error('termin') is-invalid @enderror" name="termin" id="termin" placeholder="Termin" value="{{ old('termin') }}" oninput="terminValidacija()">
+                            <input type="datetime-local" class="form-control @error('termin') is-invalid @enderror" name="termin" id="termin" placeholder="Termin - yyyy-mm-dd hh:mm" value="{{ old('termin') }}" oninput="terminValidacija()">
 
                             @error('termin')
                                 <span class="invalid-feedback" role="alert">
