@@ -22,14 +22,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/cars', function () {
-    $cars = Car::all();
+    $cars = Car::get()->take(20);
 
     return response()->json($cars);
 });
 
 
 Route::get('/reservations', function () {
-    $reservations = Reservation::all();
+    $reservations = Reservation::get()->take(20);
 
     return response()->json($reservations);
 });
@@ -42,14 +42,14 @@ Route::get('/cars/{id}', function ($id) {
 
 Route::get('/avtoservisi', function () {
 
-    $avtoservis = Avtoservi::get();
+    $avtoservis = Avtoservi::get()->take(20);
 
     return response()->json($avtoservis);
 });
 
 Route::get('/storitve', function () {
 
-    $services = Service::get();
+    $services = Service::get()->take(20);
 
     return response()->json($services);
 });
